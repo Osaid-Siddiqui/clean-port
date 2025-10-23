@@ -958,7 +958,7 @@ function PricingSection() {
               style={{
                 backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
               }}
-            >Simple, Transparent</span> Pricing
+            >Our</span> Pricing Plan
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             No hidden fees. No surprises. Just honest pricing for quality service.
