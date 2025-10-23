@@ -4,55 +4,55 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark mode as default - Primary Colors - Green from logo */
-  --primary: oklch(0.65 0.22 142);
-  --primary-foreground: oklch(0.12 0.02 0);
+  /* Primary Color - Teal Green */
+  --primary: #679976;
+  --primary-foreground: #ffffff;
 
-  /* Accent Colors - Red/Orange from logo */
-  --accent: oklch(0.7 0.25 25);
-  --accent-foreground: oklch(0.12 0.02 0);
+  /* Accent Colors - Orange/Brown */
+  --accent: #be6a07;
+  --accent-foreground: #ffffff;
 
   /* Neutrals - Dark backgrounds */
-  --background: oklch(0.12 0.02 0);
-  --foreground: oklch(0.95 0.01 0);
-  --card: oklch(0.15 0.02 0);
-  --card-foreground: oklch(0.95 0.01 0);
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
 
   /* UI Elements */
-  --muted: oklch(0.25 0.02 0);
-  --muted-foreground: oklch(0.65 0.02 0);
-  --border: oklch(0.25 0.02 0);
-  --input: oklch(0.2 0.02 0);
-  --ring: oklch(0.65 0.22 142);
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #679976;
 
   /* Popover */
-  --popover: oklch(0.15 0.02 0);
-  --popover-foreground: oklch(0.95 0.01 0);
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
 
   /* Secondary */
-  --secondary: oklch(0.25 0.02 0);
-  --secondary-foreground: oklch(0.95 0.01 0);
+  --secondary: #333333;
+  --secondary-foreground: #ffffff;
 
   /* Destructive */
-  --destructive: oklch(0.7 0.25 25);
-  --destructive-foreground: oklch(0.12 0.02 0);
+  --destructive: #be6a07;
+  --destructive-foreground: #ffffff;
 
   /* Charts */
-  --chart-1: oklch(0.65 0.22 142);
-  --chart-2: oklch(0.7 0.25 25);
-  --chart-3: oklch(0.7 0.15 200);
-  --chart-4: oklch(0.65 0.18 50);
-  --chart-5: oklch(0.5 0.2 280);
+  --chart-1: #679976;
+  --chart-2: #be6a07;
+  --chart-3: #4a9b6f;
+  --chart-4: #d47f0f;
+  --chart-5: #6ba87d;
 
   /* Sidebar */
-  --sidebar: oklch(0.15 0.02 0);
-  --sidebar-foreground: oklch(0.95 0.01 0);
-  --sidebar-primary: oklch(0.65 0.22 142);
-  --sidebar-primary-foreground: oklch(0.12 0.02 0);
-  --sidebar-accent: oklch(0.7 0.25 25);
-  --sidebar-accent-foreground: oklch(0.12 0.02 0);
-  --sidebar-border: oklch(0.25 0.02 0);
-  --sidebar-ring: oklch(0.65 0.22 142);
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #679976;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #be6a07;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: #679976;
 
   /* Radius */
   --radius: 0.625rem;
