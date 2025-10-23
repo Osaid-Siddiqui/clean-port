@@ -734,7 +734,7 @@ function GallerySection() {
   ]
 
   return (
-    <section id="gallery" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/5">
+    <section id="gallery" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "rgba(103, 153, 118, 0.05)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -842,7 +842,8 @@ function TestimonialsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-card border border-accent/20 rounded-2xl p-8 backdrop-blur-sm"
+              className="bg-card rounded-2xl p-8 backdrop-blur-sm"
+              style={{ borderColor: "rgba(103, 153, 118, 0.2)", border: "1px solid rgba(103, 153, 118, 0.2)" }}
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, j) => (
@@ -889,7 +890,7 @@ function PricingSection() {
   ]
 
   return (
-    <section id="pricing" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/5">
+    <section id="pricing" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "rgba(103, 153, 118, 0.05)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -918,11 +919,7 @@ function PricingSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
               whileHover={{ y: -10 }}
-              className={`rounded-2xl p-8 backdrop-blur-sm transition-all ${
-                tier.highlighted
-                  ? "border-2 shadow-lg"
-                  : "bg-card border border-accent/20"
-              }`}
+              className="rounded-2xl p-8 backdrop-blur-sm transition-all"
               style={tier.highlighted ? {
                 backgroundImage: `linear-gradient(135deg, rgba(103, 153, 118, 0.15) 0%, rgba(190, 106, 7, 0.15) 100%)`,
                 borderColor: "#679976",
