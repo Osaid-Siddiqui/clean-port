@@ -77,7 +77,11 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 left-6 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-primary/50 transition-all z-40"
+          className="fixed bottom-24 left-6 w-12 h-12 text-white rounded-full flex items-center justify-center hover:shadow-lg transition-all z-40"
+          style={{
+            backgroundColor: "#679976",
+            boxShadow: "0 0 20px rgba(103, 153, 118, 0.4)"
+          }}
         >
           <ArrowUp className="w-5 h-5" />
         </motion.button>
@@ -90,7 +94,11 @@ export default function Home() {
         onClick={() => setShowOffer(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-bold hover:shadow-lg hover:shadow-primary/50 transition-all z-40"
+        className="fixed bottom-6 right-6 px-6 py-3 text-white rounded-full font-bold hover:shadow-lg transition-all z-40"
+        style={{
+          backgroundImage: `linear-gradient(135deg, #679976 0%, #be6a07 100%)`,
+          boxShadow: "0 0 20px rgba(103, 153, 118, 0.4)"
+        }}
       >
         Special Offer! 🎉
       </motion.button>
@@ -197,13 +205,16 @@ function OfferPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2">Email Address</label>
+            <label className="block text-sm font-medium mb-2 text-white">Email Address</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 bg-input border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+              className="w-full px-4 py-2 bg-input border rounded-lg focus:outline-none transition-colors text-white"
+              style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
+              onFocus={(e) => e.target.style.borderColor = "#679976"}
+              onBlur={(e) => e.target.style.borderColor = "rgba(103, 153, 118, 0.3)"}
               placeholder="your@email.com"
             />
           </div>
@@ -211,13 +222,17 @@ function OfferPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-lg font-bold hover:shadow-lg hover:shadow-primary/50 transition-all"
+            className="w-full py-3 text-white rounded-lg font-bold hover:shadow-lg transition-all"
+            style={{
+              backgroundImage: `linear-gradient(135deg, #679976 0%, #be6a07 100%)`,
+              boxShadow: "0 0 20px rgba(103, 153, 118, 0.3)"
+            }}
           >
             Claim Your Discount
           </motion.button>
         </form>
 
-        <p className="text-xs text-muted-foreground text-center mt-4">
+        <p className="text-xs text-gray-400 text-center mt-4">
           We'll help you complete your quote with the promo code applied.
         </p>
       </motion.div>
@@ -252,8 +267,8 @@ function Navbar({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean; setIsMenuO
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
-              whileHover={{ color: "#22c55e" }}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              whileHover={{ color: "#679976" }}
+              className="text-sm font-medium text-white transition-colors"
             >
               {item}
             </motion.a>
@@ -265,7 +280,11 @@ function Navbar({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean; setIsMenuO
           href="tel:+15551234567"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden sm:flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all"
+          className="hidden sm:flex items-center gap-2 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all"
+          style={{
+            backgroundColor: "#679976",
+            boxShadow: "0 0 15px rgba(103, 153, 118, 0.3)"
+          }}
         >
           <Phone className="w-4 h-4" />
           Call Now
@@ -292,7 +311,8 @@ function Navbar({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean; setIsMenuO
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="block text-sm font-medium hover:text-primary transition-colors"
+              className="block text-sm font-medium text-white hover:text-white transition-colors"
+              style={{ color: "#ffffff" }}
               onClick={() => setIsMenuOpen(false)}
             >
               {item}
@@ -300,7 +320,8 @@ function Navbar({ isMenuOpen, setIsMenuOpen }: { isMenuOpen: boolean; setIsMenuO
           ))}
           <a
             href="tel:+15551234567"
-            className="block bg-primary text-primary-foreground px-4 py-2 rounded-full font-semibold text-center"
+            className="block text-white px-4 py-2 rounded-full font-semibold text-center"
+            style={{ backgroundColor: "#679976" }}
           >
             Call Now
           </a>
@@ -1128,29 +1149,29 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Trash2 className="w-5 h-5 text-primary-foreground" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundImage: `linear-gradient(135deg, #679976 0%, #be6a07 100%)` }}>
+                <Trash2 className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold">Clean Port</span>
+              <span className="font-bold text-white">Clean Port</span>
             </div>
-            <p className="text-sm text-muted-foreground">Bringing your space back to life!</p>
+            <p className="text-sm text-gray-400">Bringing your space back to life!</p>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="font-bold mb-4 text-white">Services</h4>
+            <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#services" className="hover:text-primary transition-colors">
+                <a href="#services" className="hover:text-white transition-colors">
                   Junk Removal
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-primary transition-colors">
+                <a href="#services" className="hover:text-white transition-colors">
                   Demolition
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-primary transition-colors">
+                <a href="#services" className="hover:text-white transition-colors">
                   Moving
                 </a>
               </li>
@@ -1158,20 +1179,20 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="font-bold mb-4 text-white">Company</h4>
+            <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#about" className="hover:text-primary transition-colors">
+                <a href="#about" className="hover:text-white transition-colors">
                   About
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-primary transition-colors">
+                <a href="#gallery" className="hover:text-white transition-colors">
                   Gallery
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-primary transition-colors">
+                <a href="#contact" className="hover:text-white transition-colors">
                   Contact
                 </a>
               </li>
@@ -1179,10 +1200,10 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="font-bold mb-4 text-white">Contact</h4>
+            <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="tel:+15551234567" className="hover:text-primary transition-colors">
+                <a href="tel:+15551234567" className="hover:text-white transition-colors">
                   (555) 123-4567
                 </a>
               </li>
@@ -1195,10 +1216,13 @@ function Footer() {
         <motion.div
           animate={{ scaleX: [0, 1, 0] }}
           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-          className="h-1 bg-gradient-to-r from-primary to-accent mb-8 origin-left"
+          className="h-1 mb-8 origin-left"
+          style={{
+            backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+          }}
         />
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-gray-400">
           <p>&copy; 2025 Clean Port Junk Removal. All rights reserved.</p>
         </div>
       </div>
