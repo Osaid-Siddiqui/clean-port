@@ -521,7 +521,8 @@ function AboutSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
             transition={{ duration: 0.8 }}
-            className="relative h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl overflow-hidden"
+            className="relative h-96 rounded-2xl overflow-hidden"
+            style={{ background: `linear-gradient(135deg, rgba(103, 153, 118, 0.2) 0%, rgba(190, 106, 7, 0.2) 100%)` }}
           >
             <Image
               src="https://images.pexels.com/photos/29879066/pexels-photo-29879066.jpeg"
