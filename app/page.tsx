@@ -511,7 +511,7 @@ function AboutSection() {
               }}
             >About</span> Clean Port
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             We're committed to transforming spaces and protecting the environment through responsible junk removal.
           </p>
         </motion.div>
@@ -546,11 +546,11 @@ function AboutSection() {
                 }}
               >Our</span> Mission
             </h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-gray-400 leading-relaxed">
               At Clean Port, we believe every space deserves a fresh start. Our team of professionals is dedicated to
               providing fast, reliable, and eco-friendly junk removal services that exceed expectations.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-gray-400 leading-relaxed">
               We handle everything from residential cleanouts to commercial demolition, always prioritizing
               sustainability and customer satisfaction.
             </p>
@@ -574,7 +574,7 @@ function AboutSection() {
               >
                 <CounterComponent target={parseInt(stat.value)} label={stat.label} isInView={isInView} />
               </motion.div>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
+              <p className="text-sm text-gray-400">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -677,7 +677,7 @@ function ServicesSection() {
               }}
             >Our</span> Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Comprehensive solutions for all your junk removal and space transformation needs.
           </p>
         </motion.div>
@@ -753,7 +753,7 @@ function GallerySection() {
               }}
             >Our</span> Work
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             See the transformations we've made for our satisfied customers.
           </p>
         </motion.div>
@@ -780,7 +780,7 @@ function GallerySection() {
                 className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex flex-col justify-end p-6"
               >
                 <h3 className="text-lg font-bold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.category}</p>
+                <p className="text-sm text-gray-400">{item.category}</p>
               </motion.div>
             </motion.div>
           ))}
@@ -832,7 +832,7 @@ function TestimonialsSection() {
               }}
             >Our Customers</span> Say
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Join thousands of satisfied customers across Oregon and Washington.
           </p>
         </motion.div>
@@ -909,7 +909,7 @@ function PricingSection() {
               }}
             >Simple, Transparent</span> Pricing
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             No hidden fees. No surprises. Just honest pricing for quality service.
           </p>
         </motion.div>
@@ -998,7 +998,7 @@ function ContactSection() {
               }}
             >Quote</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Contact us today for a no-obligation estimate. We're here to help!
           </p>
         </motion.div>
