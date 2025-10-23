@@ -103,7 +103,10 @@ function Preloader() {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] bg-gradient-to-br from-primary via-primary to-accent flex items-center justify-center"
+      style={{
+        background: `linear-gradient(135deg, #679976 0%, #be6a07 100%)`
+      }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
     >
       <motion.div
         animate={{ rotate: 360 }}
@@ -122,7 +125,7 @@ function Preloader() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-20 text-primary-foreground font-bold text-lg"
+        className="absolute bottom-20 text-white font-bold text-lg"
       >
         Bringing Your Space Back to Life...
       </motion.p>
@@ -320,24 +323,31 @@ function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="https://images.pexels.com/photos/6995367/pexels-photo-6995367.jpeg"
-          alt="Waste recycling background"
+          src="https://images.pexels.com/photos/7475428/pexels-photo-7475428.jpeg"
+          alt="Junk removal and recycling background"
           fill
-          className="object-cover opacity-15"
+          className="object-cover opacity-20"
         />
       </div>
 
       {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent/10 -z-10" />
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background: `linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(190, 106, 7, 0.1) 100%)`
+        }}
+      />
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        className="absolute top-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl -z-10"
+        className="absolute top-20 right-10 w-96 h-96 rounded-full blur-3xl -z-10"
+        style={{ backgroundColor: "rgba(103, 153, 118, 0.2)" }}
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        className="absolute bottom-20 left-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl -z-10"
+        className="absolute bottom-20 left-10 w-96 h-96 rounded-full blur-3xl -z-10"
+        style={{ backgroundColor: "rgba(190, 106, 7, 0.2)" }}
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
@@ -368,7 +378,10 @@ function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-6"
         >
-          <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
+          <span
+            className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 text-white"
+            style={{ backgroundColor: "rgba(103, 153, 118, 0.3)", color: "#ffffff" }}
+          >
             ✨ Professional Junk Removal
           </span>
         </motion.div>
@@ -377,17 +390,22 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl sm:text-7xl font-bold mb-6 text-balance"
+          className="text-5xl sm:text-7xl font-bold mb-6 text-balance text-white"
         >
           Bringing Your Space{" "}
-          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Back to Life!</span>
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+            }}
+          >Back to Life!</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl mb-8 max-w-2xl mx-auto text-gray-300"
         >
           Serving Oregon & Washington with reliable junk removal, demolition, and moving services. Fast, affordable, and
           eco-friendly.
@@ -401,9 +419,13 @@ function HeroSection() {
         >
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 197, 94, 0.5)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            className="px-8 py-4 text-white rounded-full font-bold text-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            style={{
+              backgroundColor: "#679976",
+              boxShadow: "0 0 20px rgba(103, 153, 118, 0.4)"
+            }}
           >
             Get a Quote <ArrowRight className="w-5 h-5" />
           </motion.a>
@@ -411,7 +433,11 @@ function HeroSection() {
             href="#gallery"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border-2 border-primary text-primary rounded-full font-bold text-lg hover:bg-primary/10 transition-all"
+            className="px-8 py-4 border-2 rounded-full font-bold text-lg transition-all"
+            style={{
+              borderColor: "#679976",
+              color: "#679976"
+            }}
           >
             See Our Work
           </motion.a>
@@ -423,7 +449,7 @@ function HeroSection() {
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
-          <ChevronDown className="w-6 h-6 text-primary" />
+          <ChevronDown className="w-6 h-6" style={{ color: "#679976" }} />
         </motion.div>
       </div>
     </section>
