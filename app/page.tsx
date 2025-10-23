@@ -690,8 +690,9 @@ function ServicesSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
-                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.2)" }}
-                className="bg-card border border-accent/20 rounded-2xl p-8 backdrop-blur-sm hover:border-primary/50 transition-all group"
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(103, 153, 118, 0.2)" }}
+                className="bg-card rounded-2xl p-8 backdrop-blur-sm transition-all group"
+                style={{ border: "1px solid rgba(103, 153, 118, 0.2)" }}
               >
                 <motion.div
                   whileHover={{ rotate: 10, scale: 1.1 }}
