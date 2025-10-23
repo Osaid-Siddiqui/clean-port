@@ -110,7 +110,7 @@ function Preloader() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const duration = 2.8
+    const duration = 5
     const startTime = Date.now()
 
     const animate = () => {
@@ -136,44 +136,41 @@ function Preloader() {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
     >
       <div className="flex flex-col items-center justify-center w-full h-full">
-        {/* Main Content Container */}
-        <div className="flex flex-col items-center gap-8 mb-20">
-          {/* Broom Image */}
-          <motion.div
-            animate={{ x: [0, progress * 2, 0] }}
-            transition={{ type: "tween", duration: 0.1 }}
-            className="relative w-24 h-24"
-          >
-            <Image
-              src="https://cdn.builder.io/api/v1/image/assets%2F7600f566bcc249649c7d6868f8f762c3%2F59e850e30f5344b3ad226fae07c2fd34?format=webp&width=200"
-              alt="Loading..."
-              width={96}
-              height={96}
-              className="w-full h-full object-contain filter drop-shadow-lg"
-            />
-          </motion.div>
-
-          {/* Percentage Text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-center"
-          >
-            <p className="text-5xl font-bold text-white mb-2">{progress}%</p>
-            <p className="text-white font-medium">Loading...</p>
-          </motion.div>
-        </div>
+        {/* Percentage Text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center mb-16"
+        >
+          <p className="text-5xl font-bold text-white mb-2">{progress}%</p>
+          <p className="text-white font-medium">Loading...</p>
+        </motion.div>
 
         {/* Progress Bar Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="w-full max-w-md px-8"
+          className="w-full max-w-md px-8 relative"
         >
           {/* Background Track */}
-          <div className="relative w-full h-3 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
+          <div className="relative w-full h-4 bg-white/20 rounded-full overflow-visible backdrop-blur-sm">
+            {/* Broom Image positioned at progress */}
+            <motion.div
+              animate={{ left: `calc(${progress}% - 48px)` }}
+              transition={{ type: "tween", duration: 0.1 }}
+              className="absolute -top-12 w-24 h-24 pointer-events-none"
+            >
+              <Image
+                src="https://cdn.builder.io/api/v1/image/assets%2F7600f566bcc249649c7d6868f8f762c3%2F59e850e30f5344b3ad226fae07c2fd34?format=webp&width=200"
+                alt="Loading..."
+                width={96}
+                height={96}
+                className="w-full h-full object-contain filter drop-shadow-lg"
+              />
+            </motion.div>
+
             {/* Progress Fill */}
             <motion.div
               animate={{ width: `${progress}%` }}
@@ -186,7 +183,7 @@ function Preloader() {
           </div>
 
           {/* Progress Text Below Bar */}
-          <p className="text-center text-white/80 text-sm font-medium mt-4">
+          <p className="text-center text-white/80 text-sm font-medium mt-8">
             Bringing Your Space Back to Life...
           </p>
         </motion.div>
