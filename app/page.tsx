@@ -176,30 +176,36 @@ function OfferPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-card border border-primary/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-primary/30"
+        className="bg-card border rounded-2xl p-8 max-w-md w-full shadow-2xl"
+        style={{
+          borderColor: "#679976",
+          boxShadow: "0 0 40px rgba(103, 153, 118, 0.3)"
+        }}
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold bg-clip-text text-transparent" style={{
+            backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+          }}>
             Special Limited Offer! 🎉
           </h3>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-accent/20 rounded-lg transition-colors"
+            className="p-1 rounded-lg transition-colors hover:bg-gray-700"
           >
-            <XIcon className="w-5 h-5" />
+            <XIcon className="w-5 h-5 text-white" />
           </button>
         </div>
 
         <div className="space-y-4 mb-6">
-          <p className="text-lg font-semibold">
-            Get <span className="text-primary text-xl">20% OFF</span> on your first junk removal service!
+          <p className="text-lg font-semibold text-white">
+            Get <span className="text-xl" style={{ color: "#679976" }}>20% OFF</span> on your first junk removal service!
           </p>
-          <p className="text-muted-foreground">
+          <p className="text-gray-400">
             Limited time offer for new customers. Fast, reliable, and eco-friendly junk removal at unbeatable prices.
           </p>
-          <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
-            <p className="text-sm font-mono font-bold text-primary">Promo Code: FRESH20</p>
-            <p className="text-xs text-muted-foreground mt-2">Valid for 30 days. Minimum service $150.</p>
+          <div className="border rounded-lg p-4" style={{ backgroundColor: "rgba(103, 153, 118, 0.1)", borderColor: "rgba(103, 153, 118, 0.3)" }}>
+            <p className="text-sm font-mono font-bold" style={{ color: "#679976" }}>Promo Code: FRESH20</p>
+            <p className="text-xs text-gray-400 mt-2">Valid for 30 days. Minimum service $150.</p>
           </div>
         </div>
 
