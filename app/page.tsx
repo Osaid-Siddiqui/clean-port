@@ -564,7 +564,8 @@ function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="bg-card border border-accent/20 rounded-xl p-6 text-center backdrop-blur-sm"
+              className="bg-card rounded-xl p-6 text-center backdrop-blur-sm"
+              style={{ border: "1px solid rgba(103, 153, 118, 0.2)" }}
             >
               <motion.div
                 className="text-3xl font-bold mb-2"
@@ -1031,7 +1032,7 @@ function ContactSection() {
               </div>
             </div>
 
-            <div className="bg-card border border-accent/20 rounded-2xl p-6 backdrop-blur-sm">
+            <div className="bg-card rounded-2xl p-6 backdrop-blur-sm" style={{ border: "1px solid rgba(103, 153, 118, 0.2)" }}>
               <h3 className="font-bold mb-4 text-white">Why Choose Clean Port?</h3>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex gap-2">
