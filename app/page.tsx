@@ -476,8 +476,13 @@ function AboutSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">About</span> Clean Port
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >About</span> Clean Port
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We're committed to transforming spaces and protecting the environment through responsible junk removal.
@@ -505,8 +510,13 @@ function AboutSection() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h3 className="text-3xl font-bold">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Mission
+            <h3 className="text-3xl font-bold text-white">
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+                }}
+              >Our</span> Mission
             </h3>
             <p className="text-muted-foreground leading-relaxed">
               At Clean Port, we believe every space deserves a fresh start. Our team of professionals is dedicated to
@@ -530,7 +540,8 @@ function AboutSection() {
               className="bg-card border border-accent/20 rounded-xl p-6 text-center backdrop-blur-sm"
             >
               <motion.div
-                className="text-3xl font-bold text-primary mb-2"
+                className="text-3xl font-bold mb-2"
+                style={{ color: "#679976" }}
               >
                 <CounterComponent target={parseInt(stat.value)} label={stat.label} isInView={isInView} />
               </motion.div>
@@ -629,8 +640,13 @@ function ServicesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Services
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >Our</span> Services
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive solutions for all your junk removal and space transformation needs.
@@ -652,16 +668,20 @@ function ServicesSection() {
               >
                 <motion.div
                   whileHover={{ rotate: 10, scale: 1.1 }}
-                  className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:shadow-primary/50 transition-all"
+                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:shadow-lg transition-all"
+                  style={{
+                    backgroundImage: `linear-gradient(135deg, #679976 0%, #be6a07 100%)`,
+                    boxShadow: "0 0 20px rgba(103, 153, 118, 0.3)"
+                  }}
                 >
-                  <Icon className="w-8 h-8 text-primary-foreground" />
+                  <Icon className="w-8 h-8 text-white" />
                 </motion.div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
+                <h3 className="text-2xl font-bold mb-3 text-white">{service.title}</h3>
+                <p className="text-gray-400 mb-6">{service.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-primary font-semibold">{service.price}</span>
+                  <span className="font-semibold" style={{ color: "#679976" }}>{service.price}</span>
                   <motion.div whileHover={{ x: 5 }}>
-                    <ArrowRight className="w-5 h-5 text-primary" />
+                    <ArrowRight className="w-5 h-5" style={{ color: "#679976" }} />
                   </motion.div>
                 </div>
               </motion.div>
@@ -695,8 +715,13 @@ function GallerySection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Work
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >Our</span> Work
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             See the transformations we've made for our satisfied customers.
@@ -769,8 +794,13 @@ function TestimonialsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            What <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our Customers</span> Say
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            What <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >Our Customers</span> Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join thousands of satisfied customers across Oregon and Washington.
@@ -789,13 +819,13 @@ function TestimonialsSection() {
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, j) => (
-                  <Star key={j} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={j} className="w-5 h-5 fill-[#679976]" style={{ color: "#679976" }} />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-6 italic">"{testimonial.content}"</p>
+              <p className="text-gray-400 mb-6 italic">"{testimonial.content}"</p>
               <div>
-                <p className="font-bold">{testimonial.name}</p>
-                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                <p className="font-bold text-white">{testimonial.name}</p>
+                <p className="text-sm text-gray-400">{testimonial.role}</p>
               </div>
             </motion.div>
           ))}
@@ -840,8 +870,13 @@ function PricingSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Simple, Transparent</span> Pricing
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >Simple, Transparent</span> Pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No hidden fees. No surprises. Just honest pricing for quality service.
@@ -858,32 +893,40 @@ function PricingSection() {
               whileHover={{ y: -10 }}
               className={`rounded-2xl p-8 backdrop-blur-sm transition-all ${
                 tier.highlighted
-                  ? "bg-gradient-to-br from-primary/20 to-accent/20 border-2 border-primary shadow-lg shadow-primary/20"
+                  ? "border-2 shadow-lg"
                   : "bg-card border border-accent/20"
               }`}
+              style={tier.highlighted ? {
+                backgroundImage: `linear-gradient(135deg, rgba(103, 153, 118, 0.15) 0%, rgba(190, 106, 7, 0.15) 100%)`,
+                borderColor: "#679976",
+                boxShadow: "0 0 30px rgba(103, 153, 118, 0.2)"
+              } : {}}
             >
-              <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-              <p className="text-muted-foreground mb-6">{tier.description}</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">{tier.name}</h3>
+              <p className="text-gray-400 mb-6">{tier.description}</p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">{tier.price}</span>
-                {tier.price !== "Custom" && <span className="text-muted-foreground ml-2">+ tax</span>}
+                <span className="text-4xl font-bold text-white">{tier.price}</span>
+                {tier.price !== "Custom" && <span className="text-gray-400 ml-2">+ tax</span>}
               </div>
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, j) => (
                   <li key={j} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full" />
-                    <span className="text-sm">{feature}</span>
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#679976" }} />
+                    <span className="text-sm text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-full py-3 rounded-lg font-semibold transition-all ${
-                  tier.highlighted
-                    ? "bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/50"
-                    : "border border-primary text-primary hover:bg-primary/10"
-                }`}
+                className="w-full py-3 rounded-lg font-semibold transition-all text-white"
+                style={tier.highlighted ? {
+                  backgroundColor: "#679976",
+                  boxShadow: "0 0 20px rgba(103, 153, 118, 0.4)"
+                } : {
+                  border: "1px solid #679976",
+                  color: "#679976"
+                }}
               >
                 Get Started
               </motion.button>
@@ -920,8 +963,13 @@ function ContactSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Get Your Free <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Quote</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+            Get Your Free <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(90deg, #679976 0%, #be6a07 100%)`
+              }}
+            >Quote</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Contact us today for a no-obligation estimate. We're here to help!
@@ -937,41 +985,41 @@ function ContactSection() {
             className="space-y-8"
           >
             <div className="flex gap-4">
-              <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Phone className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(103, 153, 118, 0.2)" }}>
+                <Phone className="w-6 h-6" style={{ color: "#679976" }} />
               </div>
               <div>
-                <h3 className="font-bold mb-1">Phone</h3>
-                <a href="tel:+15551234567" className="text-muted-foreground hover:text-primary transition-colors">
+                <h3 className="font-bold mb-1 text-white">Phone</h3>
+                <a href="tel:+15551234567" className="text-gray-400 hover:text-white transition-colors" style={{ color: "#999999" }}>
                   (555) 123-4567
                 </a>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(103, 153, 118, 0.2)" }}>
+                <MapPin className="w-6 h-6" style={{ color: "#679976" }} />
               </div>
               <div>
-                <h3 className="font-bold mb-1">Service Areas</h3>
-                <p className="text-muted-foreground">Oregon & Washington</p>
+                <h3 className="font-bold mb-1 text-white">Service Areas</h3>
+                <p className="text-gray-400">Oregon & Washington</p>
               </div>
             </div>
 
             <div className="bg-card border border-accent/20 rounded-2xl p-6 backdrop-blur-sm">
-              <h3 className="font-bold mb-4">Why Choose Clean Port?</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <h3 className="font-bold mb-4 text-white">Why Choose Clean Port?</h3>
+              <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> Licensed & Insured
+                  <span style={{ color: "#679976" }}>✓</span> Licensed & Insured
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> Eco-Friendly Disposal
+                  <span style={{ color: "#679976" }}>✓</span> Eco-Friendly Disposal
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> Same-Day Service Available
+                  <span style={{ color: "#679976" }}>✓</span> Same-Day Service Available
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> Transparent Pricing
+                  <span style={{ color: "#679976" }}>✓</span> Transparent Pricing
                 </li>
               </ul>
             </div>
@@ -986,44 +1034,54 @@ function ContactSection() {
             className="space-y-6"
           >
             <div>
-              <label className="block text-sm font-medium mb-2">Name</label>
+              <label className="block text-sm font-medium mb-2 text-white">Name</label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none transition-colors text-white"
+                style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
+                onFocus={(e) => e.target.style.borderColor = "#679976"}
+                onBlur={(e) => e.target.style.borderColor = "rgba(103, 153, 118, 0.3)"}
                 placeholder="Your name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2 text-white">Email</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none transition-colors text-white"
+                style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
+                onFocus={(e) => e.target.style.borderColor = "#679976"}
+                onBlur={(e) => e.target.style.borderColor = "rgba(103, 153, 118, 0.3)"}
                 placeholder="your@email.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Phone</label>
+              <label className="block text-sm font-medium mb-2 text-white">Phone</label>
               <input
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none transition-colors text-white"
+                style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
+                onFocus={(e) => e.target.style.borderColor = "#679976"}
+                onBlur={(e) => e.target.style.borderColor = "rgba(103, 153, 118, 0.3)"}
                 placeholder="(555) 123-4567"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Service Type</label>
+              <label className="block text-sm font-medium mb-2 text-white">Service Type</label>
               <select
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none transition-colors text-white"
+                style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
               >
                 <option value="">Select a service</option>
                 <option value="junk-removal">Junk Removal</option>
@@ -1033,21 +1091,26 @@ function ContactSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Message</label>
+              <label className="block text-sm font-medium mb-2 text-white">Message</label>
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors resize-none"
+                className="w-full px-4 py-3 bg-card border border-accent/20 rounded-lg focus:outline-none transition-colors resize-none text-white"
+                style={{ borderColor: "rgba(103, 153, 118, 0.3)" }}
                 placeholder="Tell us about your project..."
                 rows={4}
               />
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 197, 94, 0.5)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-bold text-lg hover:shadow-lg transition-all"
+              className="w-full py-4 text-white rounded-lg font-bold text-lg transition-all"
+              style={{
+                backgroundColor: "#679976",
+                boxShadow: "0 0 20px rgba(103, 153, 118, 0.4)"
+              }}
             >
               Get Your Free Quote
             </motion.button>
