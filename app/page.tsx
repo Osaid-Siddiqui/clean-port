@@ -495,7 +495,7 @@ function AboutSection() {
   ]
 
   return (
-    <section id="about" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-accent/5">
+    <section id="about" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "rgba(103, 153, 118, 0.05)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
