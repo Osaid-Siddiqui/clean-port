@@ -5,20 +5,41 @@ import Image from "next/image"
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Menu, X, Phone, MapPin, Zap, Trash2, Truck, ArrowRight, Star, ChevronDown } from "lucide-react"
+import { Menu, X, Phone, MapPin, Zap, Trash2, Truck, ArrowRight, Star, ChevronDown, ArrowUp, X as XIcon } from "lucide-react"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+  const [showPreloader, setShowPreloader] = useState(true)
+  const [showOffer, setShowOffer] = useState(false)
+  const [showBackToTop, setShowBackToTop] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const preloaderTimer = setTimeout(() => {
+      setShowPreloader(false)
+    }, 3000)
+
+    return () => clearTimeout(preloaderTimer)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      setShowBackToTop(window.scrollY > 300)
+    }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
     <div className="bg-background text-foreground overflow-hidden">
+      {/* Preloader */}
+      {showPreloader && <Preloader />}
+
       {/* Navigation */}
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
@@ -45,7 +66,159 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Special Offer Popup */}
+      <OfferPopup isOpen={showOffer} onClose={() => setShowOffer(false)} />
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          onClick={scrollToTop}
+          className="fixed bottom-24 left-6 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-primary/50 transition-all z-40"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </motion.button>
+      )}
+
+      {/* Offer Button */}
+      <motion.button
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        onClick={() => setShowOffer(true)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-bold hover:shadow-lg hover:shadow-primary/50 transition-all z-40"
+      >
+        Special Offer! 🎉
+      </motion.button>
     </div>
+  )
+}
+
+function Preloader() {
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[9999] bg-gradient-to-br from-primary via-primary to-accent flex items-center justify-center"
+    >
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        className="relative w-24 h-24"
+      >
+        <Image
+          src="https://cdn.builder.io/api/v1/image/assets%2F7600f566bcc249649c7d6868f8f762c3%2F59e850e30f5344b3ad226fae07c2fd34?format=webp&width=200"
+          alt="Loading..."
+          width={96}
+          height={96}
+          className="w-full h-full object-contain filter drop-shadow-lg"
+        />
+      </motion.div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-20 text-primary-foreground font-bold text-lg"
+      >
+        Bringing Your Space Back to Life...
+      </motion.p>
+    </motion.div>
+  )
+}
+
+function OfferPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [email, setEmail] = useState("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Scroll to contact form and fill email
+    const contactForm = document.getElementById("contact")
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: "smooth" })
+      setTimeout(() => {
+        const emailInput = document.querySelector('input[placeholder="your@email.com"]') as HTMLInputElement
+        if (emailInput) {
+          emailInput.value = email
+          emailInput.focus()
+        }
+      }, 500)
+    }
+    onClose()
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-card border border-primary/50 rounded-2xl p-8 max-w-md w-full shadow-2xl shadow-primary/30"
+      >
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Special Limited Offer! 🎉
+          </h3>
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-accent/20 rounded-lg transition-colors"
+          >
+            <XIcon className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="space-y-4 mb-6">
+          <p className="text-lg font-semibold">
+            Get <span className="text-primary text-xl">20% OFF</span> on your first junk removal service!
+          </p>
+          <p className="text-muted-foreground">
+            Limited time offer for new customers. Fast, reliable, and eco-friendly junk removal at unbeatable prices.
+          </p>
+          <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
+            <p className="text-sm font-mono font-bold text-primary">Promo Code: FRESH20</p>
+            <p className="text-xs text-muted-foreground mt-2">Valid for 30 days. Minimum service $150.</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-2">Email Address</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-2 bg-input border border-accent/20 rounded-lg focus:outline-none focus:border-primary transition-colors"
+              placeholder="your@email.com"
+            />
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            className="w-full py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-lg font-bold hover:shadow-lg hover:shadow-primary/50 transition-all"
+          >
+            Claim Your Discount
+          </motion.button>
+        </form>
+
+        <p className="text-xs text-muted-foreground text-center mt-4">
+          We'll help you complete your quote with the promo code applied.
+        </p>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -144,6 +317,16 @@ function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="https://images.pexels.com/photos/6995367/pexels-photo-6995367.jpeg"
+          alt="Waste recycling background"
+          fill
+          className="object-cover opacity-15"
+        />
+      </div>
+
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent/10 -z-10" />
       <motion.div
@@ -157,7 +340,7 @@ function HeroSection() {
         className="absolute bottom-20 left-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl -z-10"
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
         {/* Animated Particles */}
         {[...Array(5)].map((_, i) => (
           <motion.div
@@ -267,7 +450,9 @@ function AboutSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">About Clean Port</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">About</span> Clean Port
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We're committed to transforming spaces and protecting the environment through responsible junk removal.
           </p>
@@ -280,9 +465,12 @@ function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl overflow-hidden"
           >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Truck className="w-32 h-32 text-primary/40" />
-            </div>
+            <Image
+              src="https://images.pexels.com/photos/29879066/pexels-photo-29879066.jpeg"
+              alt="Junk removal and waste management"
+              fill
+              className="object-cover"
+            />
           </motion.div>
 
           <motion.div
@@ -291,7 +479,9 @@ function AboutSection() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h3 className="text-3xl font-bold">Our Mission</h3>
+            <h3 className="text-3xl font-bold">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Mission
+            </h3>
             <p className="text-muted-foreground leading-relaxed">
               At Clean Port, we believe every space deserves a fresh start. Our team of professionals is dedicated to
               providing fast, reliable, and eco-friendly junk removal services that exceed expectations.
@@ -314,12 +504,9 @@ function AboutSection() {
               className="bg-card border border-accent/20 rounded-xl p-6 text-center backdrop-blur-sm"
             >
               <motion.div
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : { scale: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 + 0.2 }}
                 className="text-3xl font-bold text-primary mb-2"
               >
-                {stat.value}
+                <CounterComponent target={parseInt(stat.value)} label={stat.label} isInView={isInView} />
               </motion.div>
               <p className="text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>
@@ -328,6 +515,58 @@ function AboutSection() {
       </div>
     </section>
   )
+}
+
+function CounterComponent({ target, label, isInView }: { target: number; label: string; isInView: boolean }) {
+  const [count, setCount] = useState(0)
+  const [isActive, setIsActive] = useState(isInView)
+  const countRef = useRef<NodeJS.Timeout | null>(null)
+  const pauseRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    if (!isInView) {
+      setCount(0)
+      setIsActive(false)
+      if (countRef.current) clearInterval(countRef.current)
+      if (pauseRef.current) clearTimeout(pauseRef.current)
+      return
+    }
+
+    if (!isActive) {
+      setIsActive(true)
+    }
+  }, [isInView])
+
+  useEffect(() => {
+    if (!isActive) return
+
+    if (count < target) {
+      countRef.current = setInterval(() => {
+        setCount((prev) => {
+          const newCount = prev + Math.ceil(target / 30)
+          return newCount >= target ? target : newCount
+        })
+      }, 50)
+
+      return () => {
+        if (countRef.current) clearInterval(countRef.current)
+      }
+    } else {
+      // Pause for 3 seconds, then restart
+      pauseRef.current = setTimeout(() => {
+        setCount(0)
+        setIsActive(true)
+      }, 3000)
+
+      return () => {
+        if (pauseRef.current) clearTimeout(pauseRef.current)
+      }
+    }
+  }, [count, target, isActive])
+
+  const displayValue = label.includes("Tons") ? `${count}+` : label.includes("Years") ? `${count}+` : label.includes("Customers") ? `${count}+` : `${count}+`
+
+  return <div>{displayValue}</div>
 }
 
 function ServicesSection() {
@@ -364,7 +603,9 @@ function ServicesSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Our Services</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Services
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive solutions for all your junk removal and space transformation needs.
           </p>
@@ -411,12 +652,12 @@ function GallerySection() {
   const isInView = useInView(ref, { once: false })
 
   const galleryItems = [
-    { id: 1, title: "Residential Cleanup", category: "Junk Removal" },
-    { id: 2, title: "Commercial Demolition", category: "Demolition" },
-    { id: 3, title: "Moving Assistance", category: "Moving" },
-    { id: 4, title: "Estate Cleanout", category: "Junk Removal" },
-    { id: 5, title: "Construction Debris", category: "Demolition" },
-    { id: 6, title: "Office Relocation", category: "Moving" },
+    { id: 1, title: "Residential Cleanup", category: "Junk Removal", image: "https://images.pexels.com/photos/29879066/pexels-photo-29879066.jpeg" },
+    { id: 2, title: "Commercial Demolition", category: "Demolition", image: "https://images.pexels.com/photos/15861727/pexels-photo-15861727.jpeg" },
+    { id: 3, title: "Moving Assistance", category: "Moving", image: "https://images.pexels.com/photos/20706509/pexels-photo-20706509.jpeg" },
+    { id: 4, title: "Estate Cleanout", category: "Junk Removal", image: "https://images.pexels.com/photos/6995367/pexels-photo-6995367.jpeg" },
+    { id: 5, title: "Construction Debris", category: "Demolition", image: "https://images.pexels.com/photos/15861727/pexels-photo-15861727.jpeg" },
+    { id: 6, title: "Office Relocation", category: "Moving", image: "https://images.pexels.com/photos/20706509/pexels-photo-20706509.jpeg" },
   ]
 
   return (
@@ -428,7 +669,9 @@ function GallerySection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Our Work</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our</span> Work
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             See the transformations we've made for our satisfied customers.
           </p>
@@ -444,9 +687,12 @@ function GallerySection() {
               whileHover={{ scale: 1.05 }}
               className="relative h-64 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl overflow-hidden cursor-pointer group"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Trash2 className="w-16 h-16 text-primary/30 group-hover:text-primary/50 transition-colors" />
-              </div>
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover group-hover:brightness-110 transition-all"
+              />
               <motion.div
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
@@ -497,7 +743,9 @@ function TestimonialsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">What Our Customers Say</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            What <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Our Customers</span> Say
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join thousands of satisfied customers across Oregon and Washington.
           </p>
@@ -566,7 +814,9 @@ function PricingSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Simple, Transparent</span> Pricing
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No hidden fees. No surprises. Just honest pricing for quality service.
           </p>
@@ -632,7 +882,6 @@ function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log("Form submitted:", formData)
   }
 
@@ -645,7 +894,9 @@ function ContactSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Get Your Free Quote</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            Get Your Free <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Quote</span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Contact us today for a no-obligation estimate. We're here to help!
           </p>
